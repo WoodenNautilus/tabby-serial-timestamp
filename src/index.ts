@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
-import TabbyCoreModule, { ConfigProvider, HotkeyProvider, TabContextMenuItemProvider } from 'tabby-core'
-import { TerminalDecorator } from 'tabby-terminal'
+import TabbyCoreModule, { ConfigProvider } from 'tabby-core'
 import { SettingsTabProvider } from 'tabby-settings'
+// import SessionMiddleware from 'tabby-core'
 
 import { SerialTimestampConfigProvider } from './configProvider'
 import { SerialTimestampSettingsTabProvider } from './settingsTabProvider'
 import { SerialTimestampSettingsTabComponent } from './settingsTab.component'
-import { ClippyDecorator } from './terminalDecorator'
-import { ClippyHotkeyProvider } from './hotkeyProvider'
-import { ClippyContextMenuProvider } from './contextMenu'
+// import { SerialTimestampSessionMiddleware } from './sessionMiddleware'
+
 
 @NgModule({
     imports: [
@@ -19,11 +18,9 @@ import { ClippyContextMenuProvider } from './contextMenu'
         TabbyCoreModule,
     ],
     providers: [
-        { provide: TabContextMenuItemProvider, useClass: ClippyContextMenuProvider, multi: true },
-        { provide: HotkeyProvider, useClass: ClippyHotkeyProvider, multi: true },
         { provide: ConfigProvider, useClass: SerialTimestampConfigProvider, multi: true },
         { provide: SettingsTabProvider, useClass: SerialTimestampSettingsTabProvider, multi: true },
-        { provide: TerminalDecorator, useClass: ClippyDecorator, multi: true },
+        // { provide: SessionMiddleware, useClass: SerialTimestampSessionMiddleware, multi: true },
     ],
     entryComponents: [
         SerialTimestampSettingsTabComponent,
@@ -32,4 +29,4 @@ import { ClippyContextMenuProvider } from './contextMenu'
         SerialTimestampSettingsTabComponent,
     ],
 })
-export default class ClippyModule { }
+export default class SerialTimestampModule { }
