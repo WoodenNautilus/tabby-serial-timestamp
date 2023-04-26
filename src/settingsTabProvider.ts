@@ -7,7 +7,7 @@ import { SerialTimestampSettingsTabComponent } from './settingsTab.component'
 @Injectable()
 export class SerialTimestampSettingsTabProvider extends SettingsTabProvider {
     id = 'timestamp'
-    icon = 'paperclip'
+    icon = 'clock' // defined in tabby-core/src/icons.json
     title = 'Serial Timestamp'
 
     getComponentType (): any {
