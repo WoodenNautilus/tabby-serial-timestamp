@@ -19,7 +19,7 @@ export class ClippyContextMenuProvider extends TerminalContextMenuItemProvider {
                 label: 'Toggle Clippy',
                 click: () => {
                     this.clippy.speak(`Bye bye ${tab.title}!`)
-                    this.clippy.toggle()
+                    // this.clippy.toggle()
                 },
             },
         ]

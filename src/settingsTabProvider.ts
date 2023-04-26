@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core'
 import { SettingsTabProvider } from 'tabby-settings'
 
-import { ClippySettingsTabComponent } from './settingsTab.component'
+import { SerialTimestampSettingsTabComponent } from './settingsTab.component'
 
 /** @hidden */
 @Injectable()
-export class ClippySettingsTabProvider extends SettingsTabProvider {
-    id = 'clippy'
+export class SerialTimestampSettingsTabProvider extends SettingsTabProvider {
+    id = 'timestamp'
     icon = 'paperclip'
-    title = 'Clippy'
+    title = 'Serial Timestamp'
 
     getComponentType (): any {
-        return ClippySettingsTabComponent
+        return SerialTimestampSettingsTabComponent
     }
 }

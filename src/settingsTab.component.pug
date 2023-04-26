@@ -1,11 +1,11 @@
-h3 Clippy
+h3 Serial Timestamp
 
 .form-line
     .header
-        .title Agent type
-        .description Select agent appearance
+        .title Timestamp type
+        .description Select timestamp format
     select.form-control(
-        [(ngModel)]='config.store.clippyPlugin.agent',
+        [(ngModel)]='config.store.serialTimestampPlugin.timestamp',
         (ngModelChange)='config.save()'
     )
-        option([ngValue]='agent', *ngFor='let agent of agents') {{agent}}
+        option([ngValue]='timestamp', *ngFor='let timestamp of timestamps') {{timestamp}}

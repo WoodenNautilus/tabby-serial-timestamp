@@ -1,10 +1,10 @@
 import { ConfigProvider } from 'tabby-core'
 
 /** @hidden */
-export class ClippyConfigProvider extends ConfigProvider {
+export class SerialTimestampConfigProvider extends ConfigProvider {
     defaults = {
-        clippyPlugin: {
-            agent: 'Clippy',
+        serialTimestampPlugin: {
+            timestamp: 'None',
         },
         hotkeys: {
             'toggle-clippy': [],

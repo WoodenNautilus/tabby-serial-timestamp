@@ -5,9 +5,9 @@ import TabbyCoreModule, { ConfigProvider, HotkeyProvider, TabContextMenuItemProv
 import { TerminalDecorator } from 'tabby-terminal'
 import { SettingsTabProvider } from 'tabby-settings'
 
-import { ClippyConfigProvider } from './configProvider'
-import { ClippySettingsTabProvider } from './settingsTabProvider'
-import { ClippySettingsTabComponent } from './settingsTab.component'
+import { SerialTimestampConfigProvider } from './configProvider'
+import { SerialTimestampSettingsTabProvider } from './settingsTabProvider'
+import { SerialTimestampSettingsTabComponent } from './settingsTab.component'
 import { ClippyDecorator } from './terminalDecorator'
 import { ClippyHotkeyProvider } from './hotkeyProvider'
 import { ClippyContextMenuProvider } from './contextMenu'
@@ -21,15 +21,15 @@ import { ClippyContextMenuProvider } from './contextMenu'
     providers: [
         { provide: TabContextMenuItemProvider, useClass: ClippyContextMenuProvider, multi: true },
         { provide: HotkeyProvider, useClass: ClippyHotkeyProvider, multi: true },
-        { provide: ConfigProvider, useClass: ClippyConfigProvider, multi: true },
-        { provide: SettingsTabProvider, useClass: ClippySettingsTabProvider, multi: true },
+        { provide: ConfigProvider, useClass: SerialTimestampConfigProvider, multi: true },
+        { provide: SettingsTabProvider, useClass: SerialTimestampSettingsTabProvider, multi: true },
         { provide: TerminalDecorator, useClass: ClippyDecorator, multi: true },
     ],
     entryComponents: [
-        ClippySettingsTabComponent,
+        SerialTimestampSettingsTabComponent,
     ],
     declarations: [
-        ClippySettingsTabComponent,
+        SerialTimestampSettingsTabComponent,
     ],
 })
 export default class ClippyModule { }
