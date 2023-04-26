@@ -1,7 +1,7 @@
 {
   "name": "tabby-serial-timestamp",
   "version": "1.0.0",
-  "description": "An example plugin that annoys you.",
+  "description": "A plugin that adds timestamp to serial logging",
   "keywords": [
     "tabby-plugin"
   ],
@@ -15,7 +15,7 @@
   "files": [
     "dist"
   ],
-  "author": "Eugene Pankov",
+  "author": "Maxime Torrelli",
   "license": "MIT",
   "devDependencies": {
     "@angular/animations": "^12.0.0",
