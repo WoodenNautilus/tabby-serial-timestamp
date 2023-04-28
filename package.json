@@ -26,7 +26,6 @@
     "@ng-bootstrap/ng-bootstrap": "^2.2.0",
     "@types/webpack-env": "^1.16.0",
     "apply-loader": "^2.0.0",
-    "clippyjs": "^0.0.3",
     "css-loader": "^5.1.1",
     "node-sass": "^5.0.0",
     "pug": "^2.0.3",
