@@ -5,9 +5,6 @@ export class SerialTimestampConfigProvider extends ConfigProvider {
     defaults = {
         serialTimestampPlugin: {
             timestamp: 'None',
-        },
-        hotkeys: {
-            'toggle-clippy': [],
-        },
+        }
     }
 }
