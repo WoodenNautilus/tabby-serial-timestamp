@@ -1,13 +1,12 @@
-# Clippy (example plugin)
+# Serial Timestamp 
 
 #### For the Tabby terminal
 
-![Screenshot](./screenshot.png)
+![Screenshot](./screenshot.png "Timestamp in action")
+![Screenshot](./screenshot-settings.png "Timestamp settings")
 
-This plugin demonstrates:
+This plugin adds timestamp to a serial tab using:
 
 * Terminal decorators
-* Hotkeys
-* Context menu items
 * Config file options
 * Setting tabs
