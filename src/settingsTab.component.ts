@@ -8,9 +8,9 @@ import { ConfigService } from 'tabby-core'
 export class SerialTimestampSettingsTabComponent {
     timestamps = [
         'None',
-        'dd/mm/yyyy hh:mm:ss:SSS',
-        'mm/dd/yyyy hh:mm:ss:SSS',
-        'yyyy/mm/dd hh:mm:ss:SSS',
+        'dd/mm/yyyy hh:mm:ss.SSS',
+        'mm/dd/yyyy hh:mm:ss.SSS',
+        'ISO 8601',
     ]
 
     constructor (
