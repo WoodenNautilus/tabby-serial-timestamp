@@ -133,7 +133,7 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
                 date = new Date()
             
                 sDate = sDate.concat(date.getDate().toString(10), "/", date.getMonth().toString(10), "/", date.getFullYear().toString(10), "/",
-                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".",date.getMilliseconds().toString(10))
+                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".", date.getMilliseconds().toString(10))
                 
                 // this.logger.info(`Date created ${sDate}`)
                 break;
@@ -141,7 +141,7 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
                 date = new Date()
 
                 sDate = sDate.concat(date.getMonth().toString(10), "/", date.getDate().toString(10), "/", date.getFullYear().toString(10), "/",
-                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".",date.getMilliseconds().toString(10))
+                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".", date.getMilliseconds().toString(10))
                 
                 break;
             default:
