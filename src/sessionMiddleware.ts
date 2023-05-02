@@ -16,7 +16,7 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
     private logger: Logger
     private firstCall: Boolean
     private formatChanged: Boolean
-    private currentTimestampType: string
+    private currentTimestampFormat: string
 
     constructor (
         private config: ConfigService,
@@ -25,12 +25,12 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
         super()
         this.firstCall = true
         this.formatChanged = false
-        this.currentTimestampType = this.config.store.serialTimestampPlugin.timestamp
+        this.currentTimestampFormat = this.config.store.serialTimestampPlugin.timestamp
 
         this.config.changed$.pipe(
             map(() => this.config.store.serialTimestampPlugin.timestamp),
             distinctUntilChanged(),
-        ).subscribe(() => this.updateTimestampType())
+        ).subscribe(() => this.updateTimestampFormat())
 
         this.logger = parentLogger
         // this.logger.info(`Middleware created`)
@@ -64,13 +64,13 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
 
             if(currentDate !== "") {
                 // Add a line feed to allow new data to be displaed without any date in front
-                newData = Buffer.concat([Buffer.from("\n"), Buffer.from("["), Buffer.from(currentDate), Buffer.from("] ")])
+                newData = Buffer.concat([Buffer.from("\r\n"), Buffer.from("["), Buffer.from(currentDate), Buffer.from("] ")])
                 this.outputToTerminal.next(newData)
             }
             else
             {
                 // Add a line feed to allow new data to be displaed without any date in front
-                this.outputToTerminal.next(Buffer.from("\n"))
+                this.outputToTerminal.next(Buffer.from("\r\n"))
             }
 
             this.formatChanged = false
@@ -111,17 +111,17 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
         super.close()
     }
 
-    private updateTimestampType () {
-        this.currentTimestampType = this.config.store.serialTimestampPlugin.timestamp
+    private updateTimestampFormat () {
+        this.currentTimestampFormat = this.config.store.serialTimestampPlugin.timestamp
         this.formatChanged = true // set to true to make sur the date is added before the new data
-        this.logger.info(`Serial timestamp changed to ${this.currentTimestampType}`)
+        this.logger.info(`Serial timestamp changed to ${this.currentTimestampFormat}`)
     }
 
     private getDate (): String {
         let sDate: String = new String("")
         let date: Date
 
-        switch(this.currentTimestampType) {
+        switch(this.currentTimestampFormat) {
             case None:
                 sDate = ""
                 break;
@@ -131,21 +131,21 @@ export class SerialTimestampMiddleware extends SessionMiddleware {
                 break;
             case Europe:
                 date = new Date()
-            
-                sDate = sDate.concat(date.getDate().toString(10), "/", date.getMonth().toString(10), "/", date.getFullYear().toString(10), "/",
-                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".", date.getMilliseconds().toString(10))
+
+                sDate = sDate.concat(date.getDate().toString(10).padStart(2, "0"), "/", (date.getMonth()+1).toString(10).padStart(2, "0"), "/", date.getFullYear().toString(10), " ",
+                                        date.getHours().toString(10).padStart(2, "0"), ":", date.getMinutes().toString(10).padStart(2, "0"), ":", date.getSeconds().toString(10).padStart(2, "0"), ".", date.getMilliseconds().toString(10).padStart(3, "0"))
                 
                 // this.logger.info(`Date created ${sDate}`)
                 break;
             case US:
                 date = new Date()
 
-                sDate = sDate.concat(date.getMonth().toString(10), "/", date.getDate().toString(10), "/", date.getFullYear().toString(10), "/",
-                                        date.getHours().toString(10), ":", date.getMinutes().toString(10), ":", date.getSeconds().toString(10), ".", date.getMilliseconds().toString(10))
+                sDate = sDate.concat((date.getMonth()+1).toString(10).padStart(2, "0"), "/", date.getDate().toString(10).padStart(2, "0"), "/", date.getFullYear().toString(10), " ",
+                                        date.getHours().toString(10).padStart(2, "0"), ":", date.getMinutes().toString(10).padStart(2, "0"), ":", date.getSeconds().toString(10).padStart(2, "0"), ".", date.getMilliseconds().toString(10).padStart(3, "0"))
                 
                 break;
             default:
-                this.logger.error(`Unknown type ${this.currentTimestampType}`)
+                this.logger.error(`Unknown format ${this.currentTimestampFormat}`)
                 sDate = ""
         }
 
