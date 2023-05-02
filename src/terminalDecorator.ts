@@ -48,11 +48,6 @@ export class SerialTimestampDecorator extends TerminalDecorator {
     // }
 
     private attachToSession (terminal: BaseTerminalTabComponent<any>) {
-        // session.output$.subscribe(data => {
-        //     if (data.includes('command not found')) {
-        //         this.clippy.speak('It looks like you\'ve typed in an incorrect command. Consider typing in a correct command instead.')
-        //     }
-        // })
         if (!terminal.session) {
             this.logger.warn(`Session is empty !`)
             return
