@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Initialise Yarn",
+            "label": "Install dependencies",
             "type": "shell",
             "command": "yarn",
             "presentation": {
