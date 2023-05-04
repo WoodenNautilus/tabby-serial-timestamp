@@ -1,6 +1,6 @@
 {
   "name": "tabby-serial-timestamp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A plugin that adds timestamp to serial sessions",
   "keywords": [
     "tabby-plugin"
